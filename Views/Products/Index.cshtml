@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MVC_Exam_ECardDB.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "TaoMoi")
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xg-2 table-bordered text-center">
+                    Tên sản phẩm: <b>@Html.DisplayFor(modelItem => item.ProdName)</b><br />
+                    Mô tả: <b>@Html.DisplayFor(modelItem => item.Description)</b><br />
+                    @{
+                        var path = "~/Content/Images/" + item.ImagePath;
+                        <img src="@Url.Content(path)" width="100px" />
+                    }
+                    <br />
+                    Giá:<b>@Html.DisplayFor(modelItem => item.Price)</b><br />
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Pid }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Pid }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Pid })
+                </div>
+            }
+</div>
+

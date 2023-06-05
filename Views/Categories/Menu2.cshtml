@@ -1,0 +1,7 @@
+﻿@model IEnumerable<MVC_Exam_ECardDB.Models.Category>
+
+@foreach (var item in Model)
+{
+    <li > <a class="nav-link" href="/shop/danhmuc/@item.Categoryid">@item.CategoryName</a></li>
+}
+
